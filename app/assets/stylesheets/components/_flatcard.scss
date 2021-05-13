@@ -1,0 +1,54 @@
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-4 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.flat-card {
+    width: 100%;
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.flat-card-image {
+    height: 180px;
+    background-position: center;
+    background-size: cover;
+}
+
+.flat-card-content {
+    padding: 24px;
+    background-color: #F8F9FA;
+    height: 200px;
+    i {
+      color: rgb(247, 212, 100);
+    }
+    p {
+      opacity: 0.53;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.flat-card-actions {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160,160,160,0.2);
+    padding: 16px 24px;
+    a{
+      text-decoration: none;
+    }
+}

@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/lists">Baptiste Cinema</a><i class="material-icons">movie</i>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="ml-auto flex">
+      <%= link_to "Add new list", new_list_path, class: 'btn btn-outline-primary my-2 my-sm-0 ml-2' %>
+    </div>
+  </div>
+</nav>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.bookmarks.first != nil ? @list.bookmarks.first.movie.poster_url : " " %>);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <p><%= @list.movies.count %> movies</p>
+  </div>
+</div>
+
+<div class="text-center w-50 ml-auto mr-auto">
+  <%= link_to "Add a movie to the list", new_list_bookmark_path(@list), class: 'btn btn-outline-success btn-lg btn-block mt-3' %>
+</div>
+
+<div class="container mt-5">
+  <div class="row mb-5">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-4">
+          <div class="flat-card">
+            <div class="flat-card-image" style="background-image: url('<%= bookmark.movie.poster_url %>')"></div>
+            <div class="flat-card-content">
+              <div class="flat-card-title">
+                <h4><%= bookmark.movie.title %> <span>- <%= bookmark.movie.rating %></span> <i class="fas fa-star"></i></h4>
+              </div>
+              <p><%= bookmark.movie.overview %></p>
+            </div>
+            <div class="flat-card-actions">
+              <p><i class="material-icons">format_quote</i><%= bookmark.comment%></p>
+              <div><%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center w-50 ml-auto mr-auto">
+<%= link_to "Back to Lists", lists_path, class: 'btn btn-outline-alert mt-3 mb-5' %>
+</div>
