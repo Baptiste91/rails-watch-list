@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/lists">Baptiste Cinema</a><i class="material-icons">movie</i>
+  <a class="navbar-brand" href="/">Baptiste Cinema</a><i class="material-icons">movie</i>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="ml-auto flex">
@@ -8,7 +8,7 @@
   </div>
 </nav>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.bookmarks.first != nil ? @list.bookmarks.first.movie.poster_url : " " %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.photo.attachment == nil ? @list.bookmarks.first.movie.poster_url : (cl_image_path @list.photo.key, crop: :fill) %>');">
   <div class="container">
     <h1><%= @list.name %></h1>
     <p><%= @list.movies.count %> movies</p>

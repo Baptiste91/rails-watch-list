@@ -15,10 +15,12 @@
   <div class="row mb-5">
     <% @lists.each do |list| %>
       <div class="col-4">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.bookmarks.first != nil ? list.bookmarks.first.movie.poster_url : " " %>)">
+          <div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attachment == nil ? list.bookmarks.first.movie.poster_url : (cl_image_path list.photo.key, crop: :fill) %>')">
             <%= link_to list.name, list_path(list), class: 'mr-3 text-light' %>
           </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
