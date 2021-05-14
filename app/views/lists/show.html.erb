@@ -22,7 +22,7 @@
 <div class="container mt-5">
   <div class="row mb-5">
     <% @list.bookmarks.each do |bookmark| %>
-      <div class="col-4">
+      <div class="col-sm-12 col-md-6 col-lg-4">
           <div class="flat-card">
             <div class="flat-card-image" style="background-image: url('<%= bookmark.movie.poster_url %>')"></div>
             <div class="flat-card-content">
