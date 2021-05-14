@@ -8,7 +8,7 @@
   </div>
 </nav>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, crop: :fill %>');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.photo.attachment == nil ? 'https://source.unsplash.com/random' : (cl_image_path @list.photo.key, crop: :fill) %>');">
   <div class="container">
     <h1><%= @list.name %></h1>
     <p><%= @list.movies.count %> movies</p>
