@@ -15,9 +15,11 @@
   <div class="row mb-5">
     <% @lists.each do |list| %>
       <div class="col-sm-12 col-md-6 col-lg-4">
+        <%= link_to list_path(list) do %>
           <div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attachment == nil ? 'https://source.unsplash.com/random' : (cl_image_path list.photo.key, crop: :fill) %>')">
-            <%= link_to list.name, list_path(list), class: 'mr-3 text-light' %>
+           <p><%= list.name %></p>
           </div>
+        <% end %>
       </div>
     <% end %>
   </div>

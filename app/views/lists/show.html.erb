@@ -45,3 +45,40 @@
 <div class="text-center w-50 ml-auto mr-auto">
 <%= link_to "Back to Lists", lists_path, class: 'btn btn-outline-alert mt-3 mb-5' %>
 </div>
+
+
+
+
+
+    <!-- Button trigger modal -->
+  <div class="d-flex justify-content-center mt-3">
+    <button type="button" class="text-decoration-none btn btn-outline-secondary btn-black" data-toggle="modal" data-target="#exampleModal">
+      Contact me !
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Send me a message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a class="text-decoration-none nav-link" data-dismiss="modal">Close</a>
+          <button type="button" class="btn btn-outline-secondary btn-black" data-dismiss="modal">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
