@@ -1,27 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Baptiste Cinema</a><i class="material-icons">movie</i>
+<%= render "lists/navbar" %>
 
-  <div class="collapse navbar-collapse">
-    <form class="flex ml-auto">
-      <input class="form-control" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://s3-us-west-2.amazonaws.com/prd-rteditorial/wp-content/uploads/2018/03/13153742/RT_300EssentialMovies_700X250.jpg'); position: relative;">
+  <div class="container">
+    <% if @present.present? %>
+      <h1 style="font-family: 'Fascinate', cursive;">Movies corresponding to the search</h1>
+    <% else %>
+      <h1 style="font-family: 'Fascinate', cursive;">All movies</h1>
+    <% end %>
+    <% if @movies.count == 1 %>
+      <p><%= @movies.count %> Movie</p>
+    <% else %>
+      <p><%= @movies.count %> Movies</p>
+    <% end %>
   </div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="flex ml-auto">
-      <%= link_to "Add new list", new_list_path, class: 'btn btn-outline-primary my-2 my-sm-0 ml-2' %>
-    </div>
-  </div>
-</nav>
+  <%= link_to "Add a new movie to the database", new_movie_path, class: 'btn btn-outline-light mt-3', style: 'position: absolute; bottom: 20px; right: 20px;' %>
+</div>
 
-<div class="text-center w-50 ml-auto mr-auto">
-  <%= link_to "Add a new movie to the database", new_movie_path, class: 'btn btn-outline-success btn-lg btn-block mt-3' %>
+<div class="container mt-5 addflat">
+  <form class="form-inline flex mr-5 ml-5" style="width: 400px">
+    <input class="form-control mr-1" name="query" type="search" placeholder="Name of a movie" aria-label="Search" value="<%= params[:query] %>" style="background-color: #141414;">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+  </form>
 </div>
 
 <div class="container mt-5">
-  <div class="row ml-1 mb-5">
-    <h1>All my Movies (<%= @movies.count %>)</h1>
-  </div>
   <div class="row mb-5">
     <% @movies.each do |movie| %>
       <div class="col-sm-12 col-md-6 col-lg-4">

@@ -1,34 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Baptiste Cinema</a><i class="material-icons">movie</i>
+<%= render "navbar" %>
 
-  <div class="collapse navbar-collapse">
-    <form class="flex ml-auto">
-      <input class="form-control" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hyperpix.net/wp-content/uploads/2020/04/cinema-paradiso-logo-font-free-download.jpg'); position: relative;">
+  <div class="container">
+    <% if @present.present? %>
+      <h1 style="font-family: 'Fascinate', cursive;">Lists corresponding to the search</h1>
+    <% else %>
+      <h1 style="font-family: 'Fascinate', cursive;">All lists</h1>
+    <% end %>
+    <% if @lists.count == 1 %>
+      <p><%= @lists.count %> List</p>
+    <% else %>
+      <p><%= @lists.count %> Lists</p>
+    <% end %>
   </div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="flex ml-auto">
-      <%= link_to "See all movies", movies_path, class: 'btn btn-outline-success my-2 my-sm-0 ml-2' %>
-    </div>
-  </div>
-  <div>
-    <div class="flex ml-auto">
-      <%= link_to "Add new list", new_list_path, class: 'btn btn-outline-primary my-2 my-sm-0 ml-2' %>
-    </div>
-  </div>
-</nav>
+  <%= link_to "Create a new list", new_list_path, class: 'btn btn-outline-light mt-3', style: 'position: absolute; bottom: 20px; right: 20px;' %>
+</div>
+
+<div class="container mt-5 addflat">
+  <form class=" form-inline flex mr-5 ml-5" style="width: 400px">
+    <input class="form-control mr-1" name="query" type="search" placeholder="Type of movies" aria-label="Search" value="<%= params[:query] %>" style="background-color: #141414;">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
 
 <div class="container mt-5">
-  <div class="row ml-1 mb-5">
-    <h1>All my Lists (<%= @lists.count %>)</h1>
-  </div>
   <div class="row mb-5">
     <% @lists.each do |list| %>
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <%= link_to list_path(list) do %>
+      <div class="col-sm-12 col-md-6 col-lg-4" style="text-decoration: none;">
+        <%= link_to list_path(list), style: 'text-decoration: none;' do %>
           <div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attachment == nil ? 'https://source.unsplash.com/random' : (cl_image_path list.photo.key, crop: :fill) %>')">
-           <p><%= list.name %></p>
+           <p style="font-family: 'Fascinate', cursive;"><%= list.name %></p>
           </div>
         <% end %>
       </div>

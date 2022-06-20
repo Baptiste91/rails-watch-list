@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def index
+    @present = params[:query]
     if params[:query].present?
       @lists = List.where("name ILIKE ?","%#{params[:query]}%")
     else
