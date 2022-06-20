@@ -16,11 +16,13 @@
   <%= link_to "Create a new list", new_list_path, class: 'btn btn-outline-light mt-3', style: 'position: absolute; bottom: 20px; right: 20px;' %>
 </div>
 
-<div class="container mt-5 addflat">
-  <form class="flex mr-5 ml-5" style="width: 400px">
-    <input class="form-control mr-1" name="query" type="search" placeholder="Type of movies" aria-label="Search" value="<%= params[:query] %>" style="background-color: #141414;">
-    <button class="btn btn-outline-light" type="submit">Search</button>
-  </form>
+<div class="container mt-5">
+  <div class="row" style="justify-content: center; align-items: center;">
+    <form class="flex form-inline">
+      <input class="form-control mr-1" name="query" type="search" placeholder="Type of movies" aria-label="Search" value="<%= params[:query] %>" style="background-color: #141414;">
+      <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
+  </div>
 </div>
 
 <div class="container mt-5">
