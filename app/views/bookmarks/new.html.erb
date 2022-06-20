@@ -1,16 +1,16 @@
 <%= render "lists/navbar" %>
 
-<div class="container mt-5 addflat">
+<div class="container mt-5" style="color: white; justify-content: center; align-items: center;">
   <div class="row">
     <div class="col">
-      <h1>Add a new movie to the <em><%= @list.name%></em> list</h1>
+      <h1 style="font-family: 'Fascinate', cursive;">Add a movie to the <em><%= @list.name%></em> list</h1>
 
       <%= simple_form_for [@list, @bookmark] do |f| %>
         <%= f.input :comment %>
         <%= f.association :movie %>
-        <%= f.submit class: 'btn btn-outline-primary mt-3' %>
+        <%= f.submit class: 'btn btn-outline-light mt-3' %>
       <% end %>
-      <%= link_to "Cancel", list_path(@list), class: 'btn btn-outline-danger mt-3' %>
+      <%= link_to "Cancel", list_path(@list), class: 'btn btn-outline-dark mt-3' %>
     </div>
   </div>
 </div>
