@@ -26,6 +26,18 @@
 </div>
 
 <div class="container mt-5">
+  <div class="row" style="justify-content: center; align-items: center;">
+    <%= link_to movies_path(order: "ASC"), style: "text-decoration: none;color: white;" do %>
+      <span style="font-family: 'Fascinate', cursive;">UP</span>
+    <% end %>
+    <span>------------</span>
+    <%= link_to movies_path(order: "DESC"), style: "text-decoration: none;color: white;" do %>
+      <span style="font-family: 'Fascinate', cursive;">DOWN</span>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mt-5">
   <div class="row mb-5">
     <% @movies.each do |movie| %>
       <div class="col-sm-12 col-md-6 col-lg-4">

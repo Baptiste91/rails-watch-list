@@ -6,6 +6,7 @@ class ListsController < ApplicationController
     else
       @lists = List.all
     end
+    @list = List.new
   end
 
   def show

@@ -6,6 +6,12 @@ class MoviesController < ApplicationController
     else
       @movies = Movie.all
     end
+
+    if params[:order] == "ASC"
+      @movies = Movie.order(:title)
+    elsif params[:order] == "DESC"
+      @movies = Movie.order(title: :desc)
+    end
   end
 
   def new

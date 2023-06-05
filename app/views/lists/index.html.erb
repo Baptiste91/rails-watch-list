@@ -1,6 +1,6 @@
 <%= render "navbar" %>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://hyperpix.net/wp-content/uploads/2020/04/cinema-paradiso-logo-font-free-download.jpg'); position: relative;">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://itpworld.files.wordpress.com/2013/12/cinema-paradiso-poster-636-220-slice.jpg?w=640'); position: relative;">
   <div class="container">
     <% if @present.present? %>
       <h1 style="font-family: 'Fascinate', cursive;">Lists corresponding to the search</h1>
@@ -13,7 +13,9 @@
       <p><%= @lists.count %> Lists</p>
     <% end %>
   </div>
-  <%= link_to "Create a new list", new_list_path, class: 'btn btn-outline-light mt-3', style: 'position: absolute; bottom: 20px; right: 20px;' %>
+  <button type="button" class='btn btn-outline-light mt-3' data-toggle="modal" data-target="#exampleModal" style='position: absolute; bottom: 20px; right: 20px;' >
+  Create a new list
+  </button>
 </div>
 
 <div class="container mt-5">
@@ -36,6 +38,36 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: black;">
+      <div class="modal-header">
+
+      </div>
+      <div class="modal-body">
+        <div class="container mt-5" style="color: white; justify-content: center; align-items: center;">
+          <div class="row">
+            <div class="col">
+              <h1 style="font-family: 'Fascinate', cursive;">Create a list</h1>
+
+              <%= simple_form_for @list do |f| %>
+                <%= f.input :name %>
+                <%= f.input :photo, as: :file %>
+                <%= f.submit class: 'btn btn-outline-light mt-3' %>
+              <% end %>
+              <%= link_to "Cancel", lists_path, class: 'btn btn-outline-dark mt-3' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
   </div>
 </div>
 
